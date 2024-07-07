@@ -14,8 +14,8 @@ public class Server {
             while (true) {
                 Socket client = server.accept();
                 System.out.println("Accepted From: " + client.getInetAddress() + " Port: " + client.getPort());
-                ClientHandler clientHandler = new ClientHandler(client);
-                clientHandler.start();
+                Entry entry = new Entry(client);
+                entry.start();
             }
         } catch (IOException ioe) {
             closeServer();
