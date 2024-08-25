@@ -1,0 +1,15 @@
+#pane {
+    -fx-background-color: #313338;
+    background-color: #313338;
+
+}
+
+.entry-buttons{
+    -fx-background-color: #5865f2;
+}
+
+#log{
+    -fx-background-color: #f4f4f4;
+     -fx-text-fill: #5865f2 ;
+    ;
+}

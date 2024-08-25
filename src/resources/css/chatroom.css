@@ -1,0 +1,30 @@
+#sendButton {
+    -fx-background-image: url("/resources/images/send%20icon.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-background-position: center;
+    -fx-background-color: transparent;
+
+}
+
+#welcomeLabel {
+    -fx-font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    -fx-font-size: 25px;
+}
+
+#searchButton {
+    -fx-background-image: url("/resources/images/search.bmp");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-background-position: center;
+    -fx-background-color: transparent;
+}
+
+#addButton {
+    -fx-background-color: rgb(121, 121, 247);
+    -fx-border-radius: 25%;
+}
+
+#userLabel{
+    -fx-font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
