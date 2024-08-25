@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChatRoomController">
+   <children>
+      <Pane layoutX="293.0" layoutY="535.0" prefHeight="70.0" prefWidth="391.0">
+         <children>
+            <TextField fx:id="sendField" layoutX="7.0" layoutY="20.0" onKeyPressed="#pressEnter" prefHeight="31.0" prefWidth="350.0" promptText="send a message..." />
+            <Button fx:id="sendButton" layoutX="365.0" layoutY="20.0" mnemonicParsing="false" onAction="#add" prefHeight="31.0" prefWidth="25.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="displayChat" layoutX="218.0" layoutY="14.0" prefHeight="516.0" prefWidth="502.0" />
+      <Pane layoutX="14.0" layoutY="10.0" prefHeight="563.0" prefWidth="204.0">
+         <children>
+            <VBox fx:id="contactList" layoutX="7.0" layoutY="53.0" prefHeight="510.0" prefWidth="190.0" />
+            <TextField fx:id="search" layoutX="7.0" layoutY="7.0" prefHeight="31.0" prefWidth="164.0" promptText="search" />
+            <ListView fx:id="userListView" layoutY="38.0" prefHeight="45.0" prefWidth="204.0" visible="false" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

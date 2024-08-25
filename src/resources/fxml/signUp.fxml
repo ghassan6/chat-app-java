@@ -5,19 +5,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
    <children>
-      <Pane layoutX="31.0" layoutY="46.0" prefHeight="411.0" prefWidth="394.0">
+      <Pane fx:id="mainPane" layoutX="31.0" layoutY="46.0" prefHeight="411.0" prefWidth="394.0">
          <children>
-            <TextField fx:id="username" layoutX="33.0" layoutY="87.0" prefHeight="40.0" prefWidth="199.0" promptText="use this to sign in" />
-            <TextField fx:id="displayname" layoutX="33.0" layoutY="161.0" prefHeight="40.0" prefWidth="199.0" promptText="what other should call you" />
-            <PasswordField fx:id="password" layoutX="38.0" layoutY="237.0" prefHeight="40.0" prefWidth="189.0" promptText="password" />
-            <Text layoutX="33.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="68.53668212890625" />
-            <Text layoutX="33.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Display name:" wrappingWidth="102.13665771484375" />
-            <Text layoutX="33.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="68.53668212890625" />
             <Text layoutX="23.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create an account" wrappingWidth="300.46600341796875">
                <font>
                   <Font size="25.0" />
@@ -26,6 +21,16 @@
                <font>
                   <Font size="18.0" />
                </font></Button>
+            <VBox fx:id="userPane" layoutX="23.0" layoutY="62.0" prefHeight="232.0" prefWidth="239.0" style="-fx-spacing: 10;">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="68.53668212890625" />
+                  <TextField fx:id="usernameTextField" prefHeight="40.0" prefWidth="199.0" promptText="use this to sign in" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Display name:" wrappingWidth="102.13665771484375" />
+                  <TextField fx:id="displayname" prefHeight="40.0" prefWidth="199.0" promptText="what other should call you" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="68.53668212890625" />
+                  <PasswordField fx:id="password" prefHeight="40.0" prefWidth="189.0" promptText="password" />
+               </children>
+            </VBox>
          </children>
       </Pane>
       <Text layoutX="79.0" layoutY="495.0" strokeType="OUTSIDE" strokeWidth="0.0" text="already have an account?" wrappingWidth="210.86602783203125">
