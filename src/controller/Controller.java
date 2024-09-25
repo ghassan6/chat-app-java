@@ -9,8 +9,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Controller {
@@ -25,6 +27,10 @@ public class Controller {
     private PasswordField password;
     @FXML
     private Button login;
+    @FXML 
+    private Label error;
+    @FXML
+    private VBox mainPane;
     
 
     public void initialize(Socket client) {
@@ -40,16 +46,25 @@ public class Controller {
             // send log operation to the server 
             writer.println("log");
     
-            writer.println(username.getText());
+            writer.println(username.getText().trim());
             writer.println(password.getText());
-        
+            
+            if (error == null) {
+                error = new Label();
+                error.setStyle("-fx-text-fill: red;");
+                mainPane.getChildren().add( 3, error);
+            }
+
+            error.setText("");
+
             if(reader.readLine().equals("valid")) {
                 Stage stage = (Stage) login.getScene().getWindow();
                 switchToChatRoom(stage , username.getText());
             }
-                
+               
+            // alert the user for wrong crendentials
+            else error.setText("Incorrect username or password!");
             
-        
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
@@ -62,10 +77,10 @@ public class Controller {
 
         // Initialize the controller of the sign up scene and then pass the client socket 
         SignUpController signUpController = loader.getController();
-        signUpController.initialize(client);
+        signUpController.setUp(client);
 
         // get the current stage
-        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         // create a "sign up" scene and apply CSS and set title to it
         Scene signUpScene = new Scene(root);

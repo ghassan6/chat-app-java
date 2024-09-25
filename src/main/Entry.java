@@ -4,9 +4,7 @@ import java.net.*;
 
 public class Entry extends Thread {
     Socket client;
-    public Entry(Socket client){
-        this.client = client;
-    }
+    public Entry(Socket client) { this.client = client; }
 
     @Override
     public void run(){
@@ -22,15 +20,8 @@ public class Entry extends Thread {
                     String name = reader.readLine();
                     String pass = reader.readLine();
 
-                    if(SQLHelper.checkCredentials(name, pass)) {
-                        System.out.println("valid");
-                        writer.println("valid");
-                    }
-
-                    else {
-                        System.out.println("not");
-                        writer.println("not valid");
-                    }
+                    String result = SQLHelper.checkCredentials(name, pass) ? "valid" : "not valid";
+                    writer.println(result);
                 }
 
                 // for sign up operation
@@ -38,18 +29,11 @@ public class Entry extends Thread {
                     String name = reader.readLine();
                     String displayName = reader.readLine();
                     String pass = reader.readLine();
-                    System.out.println(name + " " + displayName + " " + pass);
 
-                    if(SQLHelper.addUsername(name, displayName, pass).equals("taken")){
-                        System.out.println("taken");
-                        writer.println("taken");
-                    }
+                    String result = SQLHelper.addUsername(name, displayName, pass);
 
-                    else if (SQLHelper.addUsername(name, displayName, pass).equals("valid")) {
-                        // TO DO: send something else to the signup controller
-                        writer.println("Valid");
-                    }
-
+                    if (name.isEmpty() || pass.isEmpty()) writer.println("empty");
+                    else writer.println(result);
                 }
             }
         } catch (IOException ioe) {
