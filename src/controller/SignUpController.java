@@ -31,8 +31,10 @@ public class SignUpController {
     private Button signup;
     @FXML
     private VBox userPane;
+    @FXML
+    private Label error;
 
-    public void initialize(Socket client) {
+    public void setUp(Socket client) {
         this.client = client;
     }
 
@@ -55,7 +57,6 @@ public class SignUpController {
         
         stage.setScene(main);
         stage.show();
-
     }
 
     public void getSignUpInfo(ActionEvent event) {
@@ -68,17 +69,32 @@ public class SignUpController {
             writer.println("sign");
 
             // send credentials to the server
-            String username = usernameTextField.getText();
+            String username = usernameTextField.getText().trim();
+            String displayName = displayname.getText().trim();
+            String pass = password.getText().trim();
+
+            if (error == null) {
+                error = new Label();
+                error.setStyle("-fx-text-fill: red;");
+                userPane.getChildren().add( 2, error);
+            }
+
+            error.setText("");
+
+            if (username.isEmpty() || pass.isEmpty()) {
+                error.setText("All fields requierd");
+                return;
+            }
+
             writer.println(username);
-            writer.println(displayname.getText());
-            writer.println(password.getText());
+            writer.println(displayName);
+            writer.println(pass);
 
             String response = reader.readLine();
 
             if(response.equals("taken")) {
-                Label label = new Label();
-                label.setText("Username is taken, Please pick another one");
-                if(userPane.getChildren().size() < 7) userPane.getChildren().add( 2, label);
+                error.setText("Username is taken, Please pick another one");
+                return;
             }
 
             else {
@@ -109,6 +125,4 @@ public class SignUpController {
         stage.setScene(chatRoom);
         stage.show();
     }
-
-
 }

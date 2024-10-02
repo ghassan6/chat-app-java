@@ -20,8 +20,8 @@ public class Entry extends Thread {
                     String name = reader.readLine();
                     String pass = reader.readLine();
 
-                    String result = SQLHelper.checkCredentials(name, pass) ? "valid" : "not valid";
-                    writer.println(result);
+                    String response = SQLHelper.checkCredentials(name, pass) ? "valid" : "not valid";
+                    writer.println(response);
                 }
 
                 // for sign up operation
@@ -30,15 +30,12 @@ public class Entry extends Thread {
                     String displayName = reader.readLine();
                     String pass = reader.readLine();
 
-                    String result = SQLHelper.addUsername(name, displayName, pass);
-
-                    if (name.isEmpty() || pass.isEmpty()) writer.println("empty");
-                    else writer.println(result);
+                    String response = SQLHelper.addUsername(name, displayName, pass);
+                    writer.println(response);
                 }
             }
         } catch (IOException ioe) {
             System.out.println(ioe);
         }
     }
-
 }
